@@ -15,26 +15,26 @@ jobs:
   steps:
     - checkout
 
-    - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "build.gradle" }}
-        - v1-dependencies-
-
-    - run: curl -OL https://github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip
-    - run: unzip protoc-3.2.0-linux-x86_64.zip -d protoc3
-    - run: echo `which protoc`
-    - run: sudo mv protoc3/bin/protoc /usr/bin/protoc
-    - run: echo `protoc --version`
-    - run: gradle dependencies
-
-    - save_cache:
-        paths:
-          - ~/.m2
-        key: v1-dependencies-{{ checksum "build.gradle" }}
-
-    - run: gradle clean test
-
-    - store_test_results:
-        path: /tmp/test-results
-
+#    - restore_cache:
+#        keys:
+#        - v1-dependencies-{{ checksum "build.gradle" }}
+#        - v1-dependencies-
+#
+#    - run: curl -OL https://github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip
+#    - run: unzip protoc-3.2.0-linux-x86_64.zip -d protoc3
+#    - run: echo `which protoc`
+#    - run: sudo mv protoc3/bin/protoc /usr/bin/protoc
+#    - run: echo `protoc --version`
+#    - run: gradle dependencies
+#
+#    - save_cache:
+#        paths:
+#          - ~/.m2
+#        key: v1-dependencies-{{ checksum "build.gradle" }}
+#
+#    - run: gradle clean test
+#
+#    - store_test_results:
+#        path: /tmp/test-results
+#
 
